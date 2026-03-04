@@ -24,7 +24,9 @@ export function DeepDiveInstructionsPage() {
           <ul className="text-sm space-y-2 list-disc pl-5 opacity-90">
             <li><strong>Competency names</strong> — Short labels for each capability (e.g. “Settlement Execution”, “Treaty Accounting”).</li>
             <li><strong>Level descriptions</strong> — What “good” looks like at each level (1–4) for that competency. Level 4 can describe where we’re heading in ~12 months (transactions and complexity we may not have yet).</li>
-            <li><strong>Where the function operates today</strong> — For each competency, what level the function or group can deliver at and whether it’s mostly manual or automated.</li>
+            <li>
+              <strong>Where the function operates today</strong> — For each competency, what level the function or group can deliver at and whether it’s mostly manual or automated. If it’s manual, describe <em>how</em> the work is done (system reports, recurring Excel templates/EUCs, paper, a new spreadsheet every time), whether it’s done internally vs via a 3rd party, and if it’s a hybrid (some automation with manual overrides, or automated at Level 1 but manual at Level 2).
+            </li>
             <li><strong>Risks</strong> — A few bullets on what happens if we stay at the current state (e.g. key-person dependency, errors, delay).</li>
           </ul>
         </section>
@@ -54,6 +56,9 @@ export function DeepDiveInstructionsPage() {
               <span className="block opacity-90 mt-1">Target state: the function sets standards, designs solutions, owns policy and regulator liaison. Capability we’re building toward—not necessarily where we are today.</span>
             </li>
           </ul>
+          <p className="text-sm mt-4 opacity-90">
+            As you think about levels, it also helps to capture the <strong>benefits of moving up a level</strong>—especially from Level 3 to Level 4. For example: fewer manual hand-offs, faster close, better audit readiness, ability to support new products or jurisdictions, or reduced dependency on key individuals. A short note on “what we gain” at the next level makes it easier to prioritize where to invest.
+          </p>
         </section>
 
         <section className="bg-white rounded-2xl border-2 p-6" style={{ borderColor: colors.secondary + '44' }}>
@@ -64,7 +69,7 @@ export function DeepDiveInstructionsPage() {
             For each competency, we show what level the <strong>function or group</strong> operates at today and whether that work is <strong>manual</strong> (spreadsheets, email, hand-offs) or <strong>automated</strong> (system-driven, straight-through). Think “the function’s ability to complete this competency today.” The scale is forward-looking—we may be at Level 2 or 3 today while Level 4 is where we’re heading in 12 months. That gap is what we use for planning and investment.
           </p>
           <p className="text-sm opacity-90">
-            When you provide input, describe the function/group: e.g. “The function is at Level 2 today and it’s mostly manual” or “Level 3 and largely automated.” If different parts of the process differ, note that. It’s fine if the function isn’t at Level 4 yet—that’s the target we’re building toward.
+            When you provide input, describe the function/group: e.g. “The function is at Level 2 today and it’s mostly manual” or “Level 3 and largely automated.” If it’s manual, say <em>how</em> (standard report + Excel, EUCs, paper, new spreadsheet every time), and whether the work is done internally or by a 3rd party. Call out hybrid situations too—for example, “Level 1 is automated from the system, but Level 2 requires manual adjustments in Excel.” It’s fine if the function isn’t at Level 4 yet—that’s the target we’re building toward.
           </p>
         </section>
 
