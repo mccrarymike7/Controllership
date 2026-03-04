@@ -145,7 +145,7 @@ export function CapabilitiesMatrixPage() {
 
       {/* Core domains */}
       <section>
-        <h3 className="text-xl font-serif font-bold mb-6" style={{ color: colors.primary }}>4. Core Capability Domains (General)</h3>
+        <h3 className="text-xl font-serif font-bold mb-6" style={{ color: colors.primary }}>7. Core Capability Domains (General)</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {coreDomains.map((domain, i) => (
             <div key={i} className="bg-white rounded-2xl shadow-sm border overflow-hidden" style={{ borderColor: colors.secondary + '44' }}>
@@ -171,7 +171,7 @@ export function CapabilitiesMatrixPage() {
 
       {/* Team assessment */}
       <section>
-        <h3 className="text-xl font-serif font-bold mb-6" style={{ color: colors.primary }}>5. Team Assessment Summary (Illustrative)</h3>
+        <h3 className="text-xl font-serif font-bold mb-6" style={{ color: colors.primary }}>8. Team Assessment Summary (Illustrative)</h3>
         <div className="bg-white rounded-2xl shadow-sm border overflow-hidden" style={{ borderColor: colors.secondary + '44' }}>
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
@@ -211,7 +211,7 @@ export function CapabilitiesMatrixPage() {
       {/* Gap analysis */}
       <section>
         <h3 className="text-xl font-serif font-bold mb-6 flex items-center" style={{ color: colors.risk }}>
-          <AlertTriangle className="mr-2 w-5 h-5" /> 6. Strategic Gap Analysis & Recommendations
+          <AlertTriangle className="mr-2 w-5 h-5" /> 9. Strategic Gap Analysis & Recommendations
         </h3>
         <div className="space-y-4">
           {gapAnalysis.map((item, i) => (
