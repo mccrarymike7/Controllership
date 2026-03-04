@@ -1,0 +1,60 @@
+{
+  "title": "Prioritized Roadmap to Golden State",
+  "subtitle": "Driven by current capabilities matrix state and associated risks. Target: 12 months.",
+  "goldenState": {
+    "title": "Golden state",
+    "description": "A controllership operating model where data flows from systems of record to the general ledger and consolidation with minimal manual intervention, governed by clear ownership and competency at the right levels.",
+    "outcomes": [
+      "Reinsurance: Settlement and treaty accounting automated where possible; L3/L4 depth for policy and audit defense; collateral/LOC process standardized.",
+      "Investment: Clearwater–Oracle feed owned and automated; L3/L4 coverage for structured securities, derivatives, and complex valuations.",
+      "Close: FAST–Oracle and TMS integrated; LDTI and segment reporting with audit-ready traceability.",
+      "Data completeness and governance embedded in all processes and system flows."
+    ]
+  },
+  "phases": [
+    {
+      "period": "Months 0–3",
+      "label": "Stabilization",
+      "focus": "Reduce immediate restatement and key-person risk.",
+      "initiatives": [
+        { "title": "JPY/F/X and treaty settlement logic fix", "description": "Stabilize reinsurance settlement execution (currently L3 manual). Fix translation and treaty logic; document and control to reduce restatement risk.", "capabilityArea": "Reinsurance – Settlement Execution", "priority": "Critical" },
+        { "title": "Intercompany and reinsurance reconciliation baseline", "description": "Clean up intercompany and ceded/assumed reconciliation; create audit-ready baseline for treaty accounting.", "capabilityArea": "Reinsurance – Treaty Accounting", "priority": "Critical" },
+        { "title": "Reinsurance technical accounting (DIG B-36) documentation", "description": "Document embedded derivative and DIG B-36 approach; reduce reliance on single point of knowledge (currently L1 manual).", "capabilityArea": "Reinsurance – Technical Accounting", "priority": "High" },
+        { "title": "Collateral and LOC process and calendar", "description": "Formalize collateral/LOC monitoring and renewal process to avoid BMA/NAIC compliance gaps.", "capabilityArea": "Reinsurance – Collateral & LOCs", "priority": "High" }
+      ]
+    },
+    {
+      "period": "Months 3–6",
+      "label": "Integration",
+      "focus": "Automate high-volume manual work and establish data ownership.",
+      "initiatives": [
+        { "title": "FAST-to-Oracle feed automation", "description": "Automate policy/claims data flow from FAST to Oracle Fusion GL to reduce manual subledger-to-GL work.", "capabilityArea": "TOM – System of Record", "priority": "Critical" },
+        { "title": "Treasury Management System (TMS) full implementation", "description": "Complete TMS rollout and eliminate manual cash booking and subledger gaps.", "capabilityArea": "Controllership – Treasury & Cash", "priority": "Critical" },
+        { "title": "Clearwater–Oracle feed: dedicated data owner and mapping governance", "description": "Assign data owner for Investment data flow; document and govern Clearwater-to-GL mapping to reduce restatement risk as asset classes grow.", "capabilityArea": "Investment – Clearwater/Oracle Feed", "priority": "Critical" },
+        { "title": "Treaty accounting automation (L2–L3 scope)", "description": "Automate routine treaty accounting entries and settlement posting where feasible to reduce manual L2–L3 load.", "capabilityArea": "Reinsurance – Treaty Accounting", "priority": "High" }
+      ]
+    },
+    {
+      "period": "Months 6–9",
+      "label": "Automation and depth",
+      "focus": "Expand automation and build L3/L4 competency where manual remains.",
+      "initiatives": [
+        { "title": "Settlement workflow automation in Oracle", "description": "Design and implement automated settlement workflows (target L4 capability) for ceded/assumed and retroceded flows.", "capabilityArea": "Reinsurance – Settlement Execution", "priority": "High" },
+        { "title": "Clearwater–Oracle API and auto-mapping", "description": "Implement automated mapping for new asset classes; reduce manual feed breaks and mapping errors.", "capabilityArea": "Investment – Clearwater/Oracle Feed", "priority": "Critical" },
+        { "title": "LDTI reporting and actuarial–finance bridge", "description": "Automate or standardize LDTI reporting and actuarial-to-finance bridge to remove manual restatement risk.", "capabilityArea": "Technical Accounting – LDTI", "priority": "Critical" },
+        { "title": "Structured securities and derivatives: L3/L4 coverage plan", "description": "Define target L3/L4 depth for OTTI, hedge accounting, and complex valuations; hire or develop and document.", "capabilityArea": "Investment – Structured Securities, Derivatives", "priority": "High" }
+      ]
+    },
+    {
+      "period": "Months 9–12",
+      "label": "Optimization and governance",
+      "focus": "Touchless close, full audit traceability, and sustained governance.",
+      "initiatives": [
+        { "title": "OneStream-to-Workiva pipeline", "description": "Automate consolidation and reporting flow to Workiva for filing and audit readiness.", "capabilityArea": "TOM – Strategic Velocity", "priority": "High" },
+        { "title": "Segment and adjusted operating income automation", "description": "Automate segment analysis and AOI views for board-ready T+3 visibility.", "capabilityArea": "Technical Accounting – Adjusted Operating Income", "priority": "High" },
+        { "title": "Reinsurance policy and SSAP/ASC interpretation (L4)", "description": "Establish or designate L4 ownership for treaty language interpretation and policy; close audit defense gap.", "capabilityArea": "Reinsurance – Treaty Accounting", "priority": "High" },
+        { "title": "Data completeness and governance framework", "description": "Embed data ownership, completeness checks, and governance controls across all critical flows (FAST, Clearwater, TMS, OneStream).", "capabilityArea": "Cross-cutting", "priority": "Critical" }
+      ]
+    }
+  ]
+}

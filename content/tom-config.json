@@ -1,0 +1,63 @@
+{
+  "header": {
+    "title": "The Path to Institutional Maturity",
+    "subtitle": "Aspida is no longer a startup. We operate across 3 jurisdictions with complex assets. Our reporting must transition from fragile manual workarounds to an automated industrial engine.",
+    "badge": "STRATEGIC PROPOSAL 2024"
+  },
+  "complexity": {
+    "title": "The Complexity Multiplier",
+    "jurisdictions": [
+      { "name": "Bermuda", "tag": "EBS / BSCR" },
+      { "name": "US (Michigan)", "tag": "STAT / GAAP" },
+      { "name": "Cayman", "tag": "CIMA Reg" }
+    ],
+    "assetMix": ["Struct. Securities", "Derivatives", "Mortgage Loans", "Private Debt", "Alt Assets", "FHLB/FABR"],
+    "segments": [
+      "Retail (MYGA/FIA/RILA)",
+      "Reinsurance (3rd Party/Int)",
+      "Institutional (FHLB)",
+      "Corporate & Other"
+    ],
+    "reinsurance": {
+      "title": "Reinsurance Structure",
+      "subtitle": "Multi-directional treaty flow with funds withheld and currency/hedge complexity.",
+      "contractTypes": [
+        { "id": "ceded", "label": "Ceded", "description": "Business ceded to reinsurers" },
+        { "id": "assumed", "label": "Assumed", "description": "Business assumed from cedants" },
+        { "id": "retroceded", "label": "Retroceded", "description": "Reinsured portion passed to retrocessionaires" }
+      ],
+      "fundsWithheld": true,
+      "fundsWithheldLabel": "Contracts on a funds withheld basis",
+      "jyComplexity": {
+        "label": "JPY-denominated assumed contracts",
+        "requirements": [ "Hedging", "Hedge accounting" ]
+      }
+    }
+  },
+  "frictionPoints": [
+    { "label": "Reinsurance Accounting", "risk": "High", "pain": "Manual JPY & India Treaty Calcs" },
+    { "label": "LDTI Reporting", "risk": "Critical", "pain": "Manual Actuarial-Finance Bridges" },
+    { "label": "Manual Cash Booking", "risk": "High", "pain": "Subledger Gaps & TMS Implementation" },
+    { "label": "Commission Accounting", "risk": "High", "pain": "Offline Bonus & FAST Adjustments" },
+    { "label": "Investment Accounting", "risk": "High", "pain": "Clearwater Mapping & Pricing Gaps" }
+  ],
+  "frictionImpact": "Each manual reinsurance settlement or LDTI recording is a potential financial reporting restatement risk. Our scalability is capped by human capacity to manage \"offline\" subledger-to-GL breaks.",
+  "tomLayers": {
+    "layer1": { "label": "System of Record", "systems": [{ "name": "FAST", "sub": "Policy / Claims" }, { "name": "Clearwater", "sub": "Investment IBOR" }] },
+    "layer2": { "label": "Automated Integration", "core": { "name": "Oracle Fusion GL", "sub": "The Core Ledger" } },
+    "layer3": { "label": "Strategic Velocity", "systems": [{ "name": "OneStream", "sub": "Consolidation / F/X / Reconciliations" }, { "name": "T+3 Adjusted Operating Income", "sub": "Board Ready Insights" }] }
+  },
+  "phases": [
+    { "title": "Phase 1: Stabilization", "subtitle": "Plugging the Leaks", "timing": "0-3 Months", "actions": ["Fix JPY F/X translation logic", "Intercompany reconciliation clean-up", "Audit-Ready baseline creation"], "outcome": "Stopped the bleeding on financial volatility." },
+    { "title": "Phase 2: Integration", "subtitle": "Connecting the Pipes", "timing": "3-9 Months", "actions": ["Automate FAST-to-Oracle feeds", "Full TMS Implementation", "Clearwater-Oracle API Auto-map"], "outcome": "Removed 70% of manual subledger-to-GL work." },
+    { "title": "Phase 3: Optimization", "subtitle": "The Touchless Close", "timing": "9-18 Months", "actions": ["Real-time LDTI reporting", "OneStream-to-Workiva pipeline", "Automated Segment Analysis"], "outcome": "T+3 visibility with full audit traceability." }
+  ],
+  "footer": {
+    "headline": "From Fragility to Velocity",
+    "body": "Aspida's current complexity is a growth bottleneck. By investing in the Finance Data Roadmap and specialized Centers of Excellence, we eliminate the manual risks that threaten our audit performance and platform scalability.",
+    "roi": [
+      { "label": "Immediate ROI", "value": "Manual Risk Removal (JPY/LDTI)" },
+      { "label": "Long-Term Value", "value": "Uncapped Asset Growth Scalability" }
+    ]
+  }
+}

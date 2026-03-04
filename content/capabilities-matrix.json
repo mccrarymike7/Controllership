@@ -1,0 +1,157 @@
+{
+  "matrixIntro": "This matrix assesses the Finance function's ability—as a function or group—to complete key competencies across Aspida's US, Bermuda, and Cayman operations. Levels describe how well the function can deliver each competency, not individual skill alone. The scale is set in the context of a quickly growing company: Level 4 often represents our target state over the next 12 months.",
+  "proficiencyLevelContext": "Levels describe the function or group's ability to complete these competencies. Where we operate today may be below Level 4; the top of the scale is the capability we are targeting as we scale.",
+  "proficiencyLevels": [
+    { "level": 1, "name": "Foundational", "description": "The function has basic coverage; work is completed with significant supervision and guidance. Enough to run current routine work and establish a baseline as we grow." },
+    { "level": 2, "name": "Intermediate", "description": "The function can deliver routine work with minimal review. Handles standard reconciliations and reporting and can support today's volume and straightforward new transactions." },
+    { "level": 3, "name": "Advanced", "description": "The function has the depth to resolve complex issues and develop others. Can deliver the complexity we have today and the increased complexity we are moving into." },
+    { "level": 4, "name": "Expert / Strategic", "description": "Target state: the function shapes policy, liaises with regulators, and owns frameworks. Capability we are building toward over the next 12 months, not necessarily where we are today." }
+  ],
+  "deepDives": [
+    {
+      "title": "Reinsurance Administration",
+      "subtitle": "Supporting US, Bermuda, and Cayman entities with 3rd party and internal cessions.",
+      "competencies": [
+        { "name": "Settlement Execution", "level1": "Basic understanding of premium/claim flows.", "level2": "Initiates routine ceded/assumed settlements.", "level3": "Manages complex JPY treaty settlements & F/X.", "level4": "Designs automated settlement workflows in Oracle." },
+        { "name": "Treaty Accounting", "level1": "Identifies types of treaties (Coinsurance, ModCo).", "level2": "Records accounting entries for standard settlements.", "level3": "Handles complex recapture, funds withheld, or YRT accounting.", "level4": "Interprets treaty language for accounting setup (SSAP 61R/ASC 944)." },
+        { "name": "Collateral & LOCs", "level1": "Awareness of collateral requirements.", "level2": "Monitors collateral levels for existing treaties.", "level3": "Manages LOC renewals and complex trust account reconciliations.", "level4": "Optimizes capital via collateral structures & BMA/NAIC compliance." },
+        { "name": "Technical Accounting", "level1": "Knowledge that DIG B-36 exists.", "level2": "Records standard embedded derivative entries.", "level3": "Performs complex DIG B-36 valuations and disclosures.", "level4": "Lead for reinsurance accounting policy and audit defense." }
+      ],
+      "operatingState": [
+        [ { "level": 3, "mode": "manual" } ],
+        [ { "level": 1, "mode": "automated" }, { "level": 2, "mode": "manual" }, { "level": 3, "mode": "manual" } ],
+        [ { "level": 3, "mode": "manual" } ],
+        [ { "level": 1, "mode": "manual" } ]
+      ],
+      "riskSection": {
+        "items": [
+          "Manual settlement at L3 creates key-person dependency and restatement risk if JPY/F/X or treaty logic is misapplied.",
+          "Heavy manual treaty accounting at L2–L3 limits scalability and increases audit exposure; lack of L4 depth leaves policy and SSAP/ASC interpretation undefended.",
+          "Manual collateral and LOC management at L3 risks compliance gaps (BMA/NAIC) and delayed renewals.",
+          "Technical accounting at L1 only (manual) means embedded derivative and DIG B-36 work lacks depth; audit and regulator challenges are harder to defend."
+        ]
+      }
+    },
+    {
+      "title": "Investment Accounting",
+      "subtitle": "Interfacing with Clearwater and Asset Managers across complex structured assets.",
+      "competencies": [
+        { "name": "Structured Securities", "level1": "Understands Corp Bonds vs. ABS/MBS.", "level2": "Records monthly activity for private structured assets.", "level3": "Performs cash flow modeling and yield adjustment analysis.", "level4": "Expert in OTTI (Impairment) policy and complex valuation." },
+        { "name": "Mortgage Loans", "level1": "Basic RML/CML concepts.", "level2": "Reconciles loan subledgers to the General Ledger.", "level3": "Handles loan modifications, participations, and CECL modeling.", "level4": "Strategic lead for loan portfolio accounting & credit risk." },
+        { "name": "Derivatives & Hedging", "level1": "Awareness of Aspida's hedge positions.", "level2": "Records basic mark-to-market entries.", "level3": "Executes hedge accounting elections and effectiveness testing.", "level4": "Architect of derivative accounting policy and ISDA/CSA oversight." },
+        { "name": "Alt Assets & LPs", "level1": "Understands NAV reporting.", "level2": "Records LP capital calls and distributions.", "level3": "Handles complex consolidation assessments (VIE/VOE analysis).", "level4": "Lead for private equity and alternative investment structures." },
+        { "name": "Clearwater/Oracle Feed", "level1": "Navigates Clearwater reports.", "level2": "Troubleshoots standard feed breaks to Oracle Fusion.", "level3": "Maps new asset classes from Clearwater to GL Chart of Accounts.", "level4": "Architect of the end-to-end Investment Data flow and governance." }
+      ],
+      "riskSection": {
+        "items": [
+          "Manual or partially automated feeds from Clearwater increase mapping errors and delay close; lack of a dedicated data owner raises restatement risk as new asset classes are added.",
+          "Insufficient L3/L4 depth in structured securities and derivatives leaves OTTI, hedge accounting, and complex valuations exposed to audit and regulatory challenge.",
+          "Gaps in mortgage loan and alt asset competency limit scalability and increase reliance on external support or key individuals."
+        ]
+      }
+    },
+    {
+      "title": "Accounting Operations & Technical Accounting",
+      "subtitle": "Core controllership operations, accounting policy, and the actuarial connection for LDTI.",
+      "competencies": [
+        { "name": "Policy Admin Transaction Accounting (FAST → GL)", "level1": "Understands basic policy/claims data concepts and source reports.", "level2": "Posts routine journals from policy admin outputs with standard reconciliations.", "level3": "Diagnoses subledger-to-GL breaks; improves controls and data completeness checks.", "level4": "Architects automated posting and governance (data owner, mappings, completeness rules)." },
+        { "name": "Cash Transactions (Treasury / TMS)", "level1": "Understands cash movement types and basic booking concepts.", "level2": "Records routine cash activity; performs basic bank recs with review.", "level3": "Owns end-to-end cash workflow; resolves breaks; reduces manual cash booking.", "level4": "Designs touchless cash accounting via TMS integration and control monitoring." },
+        { "name": "Accounting Policy (GAAP/STAT)", "level1": "Awareness of key policy areas and where guidance lives.", "level2": "Applies standard policies to routine transactions; maintains policy memos.", "level3": "Leads technical interpretations for complex transactions; mentors team.", "level4": "Shapes policy, aligns stakeholders, and defends positions with audit/regulators." },
+        { "name": "LDTI Actuarial–Finance Connection", "level1": "Understands basic LDTI concepts and required actuarial inputs.", "level2": "Posts standard LDTI entries and performs routine variance explanations.", "level3": "Owns actuarial bridge; resolves complex reserve/DAC issues; improves traceability.", "level4": "Architects automated LDTI workflow and governance across models, data, and controls." }
+      ],
+      "riskSection": {
+        "items": [
+          "Manual policy admin and cash processes create subledger-to-GL gaps that delay close and increase audit exposure.",
+          "Weak accounting policy ownership increases inconsistent treatment across jurisdictions and products and raises restatement risk.",
+          "A fragile LDTI actuarial–finance bridge can cause late adjustments, poor traceability, and control deficiencies."
+        ]
+      }
+    },
+    {
+      "title": "Financial Reporting",
+      "subtitle": "Regulatory and consolidated reporting, external assurance, and internal control completion monitoring.",
+      "competencies": [
+        { "name": "Regulatory Reporting (RBC / BSCR / KY RBC)", "level1": "Understands filing types (RBC/BSCR/KY RBC) and key deadlines.", "level2": "Prepares routine schedules for RBC/BSCR/KY RBC and supports filing production with review.", "level3": "Leads jurisdiction-specific regulatory filings; resolves technical questions; manages timelines and evidence.", "level4": "Owns regulator interactions and reporting governance; drives Group Capital/Supervision alignment and audit-ready evidence." },
+        { "name": "Consolidated GAAP Reporting", "level1": "Understands core GAAP statements and consolidation concepts.", "level2": "Prepares routine consolidation schedules and disclosures with review.", "level3": "Owns complex consolidations (intercompany, FX); improves close and traceability.", "level4": "Architects consolidated reporting model and non-GAAP/AOI governance." },
+        { "name": "SEC / Broker-Dealer Reporting", "level1": "Awareness of BD reporting requirements and cadence.", "level2": "Prepares routine BD reporting packages with review.", "level3": "Leads BD reporting, resolves issues, and coordinates with compliance partners.", "level4": "Owns BD reporting framework and regulator interactions; designs controls and evidence." },
+        { "name": "External Audit Interaction", "level1": "Provides requested support and basic documentation.", "level2": "Responds to routine audit PBCs; tracks open items.", "level3": "Leads audit coordination; resolves findings; strengthens controls and data quality.", "level4": "Shapes audit strategy and positions; ensures defensible judgments and governance." },
+        { "name": "Internal Control Completion Monitoring", "level1": "Understands control checklists and sign-off expectations.", "level2": "Executes assigned controls and documents evidence consistently.", "level3": "Monitors completion and exceptions; drives remediation and standardization.", "level4": "Designs control operating model, automation, and assurance reporting for leadership." }
+      ],
+      "riskSection": {
+        "items": [
+          "Manual filing production and weak governance can lead to missed deadlines, late adjustments, and inconsistent regulatory positions across jurisdictions.",
+          "Insufficient consolidation depth (intercompany/FX) increases the likelihood of material misstatement and delays close.",
+          "Weak audit and control completion monitoring increases findings, rework, and credibility risk with stakeholders."
+        ]
+      }
+    },
+    {
+      "title": "Finance Systems",
+      "subtitle": "General ledger, subledger integration, consolidation, data and reporting tools, master data governance, and AI readiness.",
+      "competencies": [
+        { "name": "General Ledger (Oracle Fusion)", "level1": "Understands GL structure and basic journal entry posting.", "level2": "Posts and reviews routine JEs; runs period-close steps with supervision.", "level3": "Owns close design and troubleshooting; maintains CoA and subledger integration.", "level4": "Architects GL and close process; governs CoA and integration with source systems." },
+        { "name": "Subledger & Source System Integration", "level1": "Understands key feeds (FAST, Clearwater, TMS) and where they land.", "level2": "Runs standard feeds and reconciliations; resolves routine breaks with guidance.", "level3": "Owns feed monitoring and mapping; designs completeness checks and data quality rules.", "level4": "Data owner for integration layer; designs mappings, governance, and audit-ready evidence." },
+        { "name": "Consolidation Platform (OneStream)", "level1": "Understands consolidation and rec workflow in OneStream.", "level2": "Runs balance sheet recs and routine consolidation with review.", "level3": "Leads consolidation model changes; improves F/X and intercompany workflows.", "level4": "Owns consolidation and reporting architecture; governs hierarchy and output quality." },
+        { "name": "Data Warehouse / DataMart / Analytics", "level1": "Runs standard reports and understands data sources.", "level2": "Writes basic queries for reconciliation and variance analysis.", "level3": "Designs data quality checks and audit trail; supports close and controls.", "level4": "Architects finance data model and analytics governance; drives self-serve and controls." },
+        { "name": "Reporting & Filing Tools", "level1": "Uses Workiva, AuditBoard (or equivalent) for assigned tasks.", "level2": "Prepares filing packages and control evidence with consistent documentation.", "level3": "Owns filing and control workflows; improves tool use and evidence quality.", "level4": "Defines tool strategy and integration with GL/consolidation; ensures audit-ready evidence." },
+        { "name": "Master Data & Hierarchy Governance", "level1": "Awareness of CoA, entity, and segment hierarchies and their use.", "level2": "Maintains hierarchies per policy; supports recs and reporting with review.", "level3": "Owns hierarchy design and change control; aligns with reporting and close.", "level4": "Governs master data and hierarchy strategy; ensures consistency and data completeness." },
+        { "name": "AI Readiness", "level1": "Awareness of AI use cases in finance (automation, analytics, controls).", "level2": "Uses approved AI-assisted tools for routine tasks; follows data and governance requirements.", "level3": "Evaluates and implements AI solutions for close, recs, or reporting; ensures data quality and control.", "level4": "Defines finance AI strategy, governance, and readiness; aligns with enterprise data and ethics standards." }
+      ],
+      "riskSection": {
+        "items": [
+          "Key-person dependency on feeds and mappings creates restatement risk when integrations break or change.",
+          "Weak data ownership and completeness checks across systems delay close and increase audit and control findings.",
+          "Fragmented tools and manual handoffs between GL, consolidation, and filing increase errors and rework; low AI readiness limits scalability and consistency."
+        ]
+      }
+    }
+  ],
+  "coreDomains": [
+    {
+      "groupName": "A. Technical Accounting & Regulatory Reporting",
+      "competencies": [
+        { "name": "US GAAP (LDTI)", "focusAreas": ["Expertise in ASC 944, liability for future policy benefits (LFPB), and DAC for annuities."] },
+        { "name": "Bermuda STAT / EBS", "focusAreas": ["Knowledge of BMA reporting requirements, Economic Balance Sheet (EBS) adjustments, and BSCR."] },
+        { "name": "US Statutory (NAIC)", "focusAreas": ["\"Blue Book\" production, SSAP knowledge, and Risk-Based Capital (RBC) for Michigan."] },
+        { "name": "Consolidation", "focusAreas": ["Management of complex intercompany eliminations and F/X translation (JPY/India)."] },
+        { "name": "Adjusted Operating Income", "focusAreas": ["Deep understanding of Aspida's specific non-GAAP measures for external reporting."] }
+      ]
+    },
+    {
+      "groupName": "B. Controllership & Insurance Operations",
+      "competencies": [
+        { "name": "Premium & Commission", "focusAreas": ["Reconciling FAST feeds to Oracle; manual bonus commission adjustments."] },
+        { "name": "Reserves Coordination", "focusAreas": ["Liaising with Actuarial to record complex LDTI reserves and explaining variances."] },
+        { "name": "Treasury & Cash", "focusAreas": ["Managing the new Treasury Management System (TMS) and manual cash booking processes."] },
+        { "name": "Broker-Dealer", "focusAreas": ["Specific accounting and reporting requirements for the BD distribution channel."] }
+      ]
+    },
+    {
+      "groupName": "C. Finance Systems & Data Fluency",
+      "competencies": [
+        { "name": "Oracle Fusion", "focusAreas": ["General Ledger navigation, Journal Entry interfaces, and financial reporting modules."] },
+        { "name": "FAST Policy Admin", "focusAreas": ["Understanding policy-level data extracts and subledger-to-GL data flows."] },
+        { "name": "OneStream", "focusAreas": ["Expertise in balance sheet reconciliations and consolidation workflows."] },
+        { "name": "Data Analytics (SQL)", "focusAreas": ["Querying the Data Warehouse/DataMart for transaction-level reconciliation."] },
+        { "name": "Reporting Tools", "focusAreas": ["Proficiency in Workiva for filing and AuditBoard for SOX/Internal Control sign-offs."] }
+      ]
+    }
+  ],
+  "teamAssessment": {
+    "dimensionColumns": ["Reinsurance", "Inv. Accounting", "Accounting Ops & Technical", "Financial Reporting", "Finance Systems"],
+    "rows": [
+      { "label": "Controller", "levels": { "Reinsurance": 4, "Inv. Accounting": 3, "Accounting Ops & Technical": 4, "Financial Reporting": 3, "Finance Systems": 3 } },
+      { "label": "Assistant Controller", "levels": { "Reinsurance": 3, "Inv. Accounting": 2, "Accounting Ops & Technical": 3, "Financial Reporting": 2, "Finance Systems": 3 } },
+      { "label": "Bermuda Controller", "levels": { "Reinsurance": 3, "Inv. Accounting": 2, "Accounting Ops & Technical": 3, "Financial Reporting": 4, "Finance Systems": 2 } },
+      { "label": "Director Accounting Policy/Operations", "levels": { "Reinsurance": 2, "Inv. Accounting": 2, "Accounting Ops & Technical": 4, "Financial Reporting": 2, "Finance Systems": 3 } },
+      { "label": "Director Investment Accounting", "levels": { "Reinsurance": 1, "Inv. Accounting": 4, "Accounting Ops & Technical": 3, "Financial Reporting": 2, "Finance Systems": 3 } },
+      { "label": "Director Finance Systems", "levels": { "Reinsurance": 2, "Inv. Accounting": 2, "Accounting Ops & Technical": 2, "Financial Reporting": 2, "Finance Systems": 4 } },
+      { "label": "Reinsurance Manager", "levels": { "Reinsurance": 4, "Inv. Accounting": 1, "Accounting Ops & Technical": 3, "Financial Reporting": 3, "Finance Systems": 2 } }
+    ]
+  },
+  "gapAnalysis": [
+    { "title": "Key Risk: JPY F/X & Treaty Complexity", "riskLevel": "high", "body": "With JPY treaties and an India subsidiary, F/X translation is a high-risk area. At least two \"Level 3\" experts are required for redundancy." },
+    { "title": "Investment Complexity", "riskLevel": "high", "body": "Given the private structured securities and derivatives, the interface between Clearwater and Oracle needs a dedicated \"Data Owner\" to manage mapping as new asset classes are added." },
+    { "title": "Manual Processes", "riskLevel": "high", "body": "The \"manual cash booking\" and \"manual bonus commission adjustments\" represent operational risks. The \"Data Roadmap\" should prioritize automating these interfaces between FAST and Oracle." }
+  ]
+}
