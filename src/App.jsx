@@ -7,9 +7,14 @@ import { TOMPage } from './pages/TOMPage';
 import { CapabilitiesMatrixPage } from './pages/CapabilitiesMatrixPage';
 import { DeepDiveInstructionsPage } from './pages/DeepDiveInstructionsPage';
 import { RoadmapPage } from './pages/RoadmapPage';
+import { ImplementationPlanPage } from './pages/ImplementationPlanPage';
 import { colors } from './theme';
 
-const VALID_VIEW_IDS = new Set(['complexity', 'tom', 'capabilities', 'capabilities-instructions', 'roadmap']);
+const VALID_VIEW_IDS = new Set([
+  'complexity', 'tom', 'capabilities', 'capabilities-instructions',
+  'roadmap', 'roadmap-reinsurance', 'roadmap-investment', 'roadmap-accounting-ops', 'roadmap-financial-reporting', 'roadmap-finance-systems',
+  'implementation-plan',
+]);
 
 function viewFromHash() {
   const hash = window.location.hash.slice(1).replace(/^\/+/, '');
@@ -47,7 +52,10 @@ export default function App() {
       {currentView === 'tom' && <TOMPage />}
       {currentView === 'capabilities' && <CapabilitiesMatrixPage />}
       {currentView === 'capabilities-instructions' && <DeepDiveInstructionsPage />}
-      {currentView === 'roadmap' && <RoadmapPage />}
+      {(currentView === 'roadmap' || currentView?.startsWith('roadmap-')) && (
+        <RoadmapPage currentView={currentView} />
+      )}
+      {currentView === 'implementation-plan' && <ImplementationPlanPage />}
       {!currentView && (
         <div
           className="flex flex-col items-center justify-center min-h-[60vh] text-center px-6"

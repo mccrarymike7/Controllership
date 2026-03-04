@@ -1,18 +1,59 @@
-import { GraduationCap, AlertTriangle } from 'lucide-react';
-import { colors, themeMessaging } from '../theme';
+import { useEffect, useRef, useState } from 'react';
+import { GraduationCap, AlertTriangle, TrendingUp } from 'lucide-react';
+import { colors } from '../theme';
 import matrixConfig from '../../content/capabilities-matrix.json';
 
 const levelColors = [colors.secondary, colors.action, colors.target, colors.primary];
 
 export function CapabilitiesMatrixPage() {
   const { matrixIntro, proficiencyLevels, deepDives, coreDomains, teamAssessment, gapAnalysis } = matrixConfig;
+  const [showSideLegend, setShowSideLegend] = useState(false);
+  const deepDiveStartRef = useRef(null);
+  const deepDiveEndRef = useRef(null);
+
+  useEffect(() => {
+    const startEl = deepDiveStartRef.current;
+    const endEl = deepDiveEndRef.current;
+    if (!startEl || !endEl) return;
+
+    const scrollContainer = startEl.closest('main');
+    if (!scrollContainer) return;
+
+    const TOP_OFFSET = 24;
+
+    const isAboveTopInRoot = (el) => {
+      const rootRect = scrollContainer.getBoundingClientRect();
+      const elRect = el.getBoundingClientRect();
+      const relativeTop = elRect.top - rootRect.top;
+      return relativeTop <= TOP_OFFSET;
+    };
+
+    const recompute = () => {
+      const startAboveTop = isAboveTopInRoot(startEl);
+      const endAboveTop = isAboveTopInRoot(endEl);
+      setShowSideLegend(startAboveTop && !endAboveTop);
+    };
+
+    // Use IntersectionObserver to avoid manual scroll listeners, but compute positions relative to the scroll root.
+    const observer = new IntersectionObserver(() => recompute(), { root: scrollContainer, threshold: [0] });
+
+    observer.observe(startEl);
+    observer.observe(endEl);
+    recompute();
+
+    window.addEventListener('resize', recompute, { passive: true });
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('resize', recompute);
+    };
+  }, []);
 
   return (
     <div className="p-4 md:p-8 max-w-6xl mx-auto space-y-12" style={{ color: colors.primary }}>
       {/* Intro */}
       <div className="flex flex-col gap-2">
+        <h2 className="text-xl font-serif font-bold" style={{ color: colors.primary }}>Why are we doing this?</h2>
         <p className="text-base opacity-90 max-w-3xl">{matrixIntro}</p>
-        <p className="text-sm opacity-80 max-w-2xl" style={{ color: colors.secondary }}>{themeMessaging.capabilities}</p>
       </div>
 
       {/* Proficiency levels */}
@@ -43,11 +84,8 @@ export function CapabilitiesMatrixPage() {
         </div>
       </section>
 
-      {/* Operating state legend — sticky at top when scrolling */}
-      <section
-        className="sticky top-0 z-10 flex flex-wrap items-center gap-6 p-4 rounded-xl border-2 bg-white shadow-sm"
-        style={{ borderColor: colors.secondary + '44' }}
-      >
+      {/* Operating state legend — horizontal under levels (non-sticky) */}
+      <section className="flex flex-wrap items-center gap-6 p-4 rounded-xl border-2 bg-white shadow-sm" style={{ borderColor: colors.secondary + '44' }}>
         <span className="text-xs font-bold uppercase tracking-widest opacity-70">Operating state (level + mode)</span>
         <div className="flex items-center gap-2">
           <span className="w-6 h-6 rounded border-2 shrink-0" style={{ backgroundColor: colors.risk + '35', borderColor: colors.risk }} />
@@ -60,19 +98,42 @@ export function CapabilitiesMatrixPage() {
         <p className="text-xs opacity-70">Cells show where the function operates today; color indicates manual vs automated at that level.</p>
       </section>
 
-      {/* Deep-dive tables */}
-      {deepDives.map((dive, diveIdx) => {
-        const operatingState = dive.operatingState;
-        const getMode = (compIdx, level) => {
-          if (!operatingState || !operatingState[compIdx]) return null;
-          const entry = operatingState[compIdx].find((e) => e.level === level);
-          return entry ? entry.mode : null;
-        };
-        return (
-          <section key={diveIdx}>
-            <h3 className="text-xl font-serif font-bold mb-2" style={{ color: colors.primary }}>{diveIdx + 2}. Deep Dive: {dive.title}</h3>
-            <p className="text-sm opacity-70 mb-6">{dive.subtitle}</p>
-            <div className="bg-white rounded-2xl shadow-sm border overflow-hidden" style={{ borderColor: colors.secondary + '44' }}>
+      {/* Deep-dive tables. Side legend becomes sticky + vertical while scrolling through deep dives. */}
+      <div ref={deepDiveStartRef} className="h-px" aria-hidden="true" />
+      <div className="flex items-stretch">
+        {/* Zero-width column so the legend doesn't reduce table width */}
+        <div className="w-0 shrink-0 overflow-visible hidden lg:block self-stretch">
+          {showSideLegend && (
+            <aside
+              className="sticky top-0 z-10 w-36 h-fit -translate-x-44 flex flex-col gap-4 p-4 rounded-xl border-2 bg-white shadow-sm"
+              style={{ borderColor: colors.secondary + '44' }}
+            >
+              <span className="text-xs font-bold uppercase tracking-widest opacity-70 leading-snug">Operating state (level + mode)</span>
+              <div className="flex items-center gap-2">
+                <span className="w-6 h-6 rounded border-2 shrink-0" style={{ backgroundColor: colors.risk + '35', borderColor: colors.risk }} />
+                <span className="text-sm font-medium">Manual</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="w-6 h-6 rounded border-2 shrink-0" style={{ backgroundColor: colors.target + '35', borderColor: colors.target }} />
+                <span className="text-sm font-medium">Automated</span>
+              </div>
+              <p className="text-[11px] opacity-70 leading-snug">Cells show where the function operates today.</p>
+            </aside>
+          )}
+        </div>
+        <div className="flex-1 min-w-0 space-y-12">
+          {deepDives.map((dive, diveIdx) => {
+            const operatingState = dive.operatingState;
+            const getMode = (compIdx, level) => {
+              if (!operatingState || !operatingState[compIdx]) return null;
+              const entry = operatingState[compIdx].find((e) => e.level === level);
+              return entry ? entry.mode : null;
+            };
+            return (
+              <section key={diveIdx}>
+                <h3 className="text-xl font-serif font-bold mb-2" style={{ color: colors.primary }}>{diveIdx + 2}. Deep Dive: {dive.title}</h3>
+                <p className="text-sm opacity-70 mb-6">{dive.subtitle}</p>
+                <div className="bg-white rounded-2xl shadow-sm border overflow-hidden" style={{ borderColor: colors.secondary + '44' }}>
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
                   <thead>
@@ -139,9 +200,39 @@ export function CapabilitiesMatrixPage() {
                 </ul>
               </div>
             )}
-          </section>
-        );
-      })}
+            <div
+              className="mt-6 rounded-xl border-2 overflow-hidden"
+              style={{ backgroundColor: '#ecfdf5', borderColor: '#86efac' }}
+            >
+              <div className="px-4 py-3 border-b flex items-center gap-2" style={{ borderColor: '#86efac', backgroundColor: '#d1fae5' }}>
+                <TrendingUp className="w-5 h-5 shrink-0 opacity-90" style={{ color: '#047857' }} />
+                <h4 className="text-sm font-semibold uppercase tracking-wider" style={{ color: '#047857' }}>
+                  Benefits of Leveling Up
+                </h4>
+              </div>
+              <div className="p-4">
+                {dive.benefitSection && dive.benefitSection.items && dive.benefitSection.items.length > 0 ? (
+                  <ul className="space-y-2 list-none">
+                    {dive.benefitSection.items.map((item, k) => (
+                      <li key={k} className="text-sm flex items-start gap-2" style={{ color: colors.primary }}>
+                        <span className="shrink-0 mt-1 w-1.5 h-1.5 rounded-full opacity-90" style={{ backgroundColor: '#059669' }} />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p className="text-sm opacity-85" style={{ color: colors.primary }}>
+                    Team to add benefits of moving to the next level (e.g. faster close, better audit readiness, reduced key-person risk).
+                  </p>
+                )}
+              </div>
+            </div>
+              </section>
+            );
+          })}
+          <div ref={deepDiveEndRef} className="h-px" aria-hidden="true" />
+        </div>
+      </div>
 
       {/* Core domains */}
       <section>

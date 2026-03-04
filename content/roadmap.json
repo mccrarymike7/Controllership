@@ -1,60 +1,265 @@
 {
-  "title": "Prioritized Roadmap to Golden State",
-  "subtitle": "Driven by current capabilities matrix state and associated risks. Target: 12 months.",
-  "goldenState": {
-    "title": "Golden state",
-    "description": "A controllership operating model where data flows from systems of record to the general ledger and consolidation with minimal manual intervention, governed by clear ownership and competency at the right levels.",
-    "outcomes": [
-      "Reinsurance: Settlement and treaty accounting automated where possible; L3/L4 depth for policy and audit defense; collateral/LOC process standardized.",
-      "Investment: Clearwater–Oracle feed owned and automated; L3/L4 coverage for structured securities, derivatives, and complex valuations.",
-      "Close: FAST–Oracle and TMS integrated; LDTI and segment reporting with audit-ready traceability.",
-      "Data completeness and governance embedded in all processes and system flows."
+  "summary": {
+    "title": "Prioritized Roadmap to Golden State",
+    "subtitle": "Summary across all Capabilities Matrix deep-dive areas. Each area has its own 3-, 6-, and 9-month roadmap in the left menu. Target: 12 months.",
+    "goldenState": {
+      "title": "Golden state",
+      "description": "A controllership operating model where data flows from systems of record to the general ledger and consolidation with minimal manual intervention, governed by clear ownership and competency at the right levels.",
+      "outcomes": [
+        "Reinsurance Administration: Settlement and treaty accounting automated where possible; L3/L4 depth for policy and audit defense; collateral/LOC process standardized.",
+        "Investment Accounting: Clearwater–Oracle feed owned and automated; L3/L4 coverage for structured securities, derivatives, and complex valuations.",
+        "Accounting Operations & Technical Accounting: FAST–Oracle and TMS integrated; LDTI and segment reporting with audit-ready traceability.",
+        "Financial Reporting: Regulatory and consolidated reporting with full audit traceability and control evidence.",
+        "Finance Systems: Data completeness and governance embedded in close, subledger-to-GL flows, and consolidation."
+      ]
+    },
+    "phases": [
+      {
+        "period": "Months 0–3",
+        "label": "Stabilization",
+        "focus": "Reduce immediate restatement and key-person risk.",
+        "people": [],
+        "processes": [
+          { "title": "JPY/F/X and treaty settlement logic fix", "description": "Stabilize reinsurance settlement execution (currently L3 manual). Fix translation and treaty logic; document and control to reduce restatement risk.", "capabilityArea": "Reinsurance Administration – Settlement Execution", "priority": "Critical" },
+          { "title": "Intercompany and reinsurance reconciliation baseline", "description": "Clean up intercompany and ceded/assumed reconciliation; create audit-ready baseline for treaty accounting.", "capabilityArea": "Reinsurance Administration – Treaty Accounting", "priority": "Critical" },
+          { "title": "Reinsurance technical accounting (DIG B-36) documentation", "description": "Document embedded derivative and DIG B-36 approach; reduce reliance on single point of knowledge (currently L1 manual).", "capabilityArea": "Reinsurance Administration – Technical Accounting", "priority": "High" },
+          { "title": "Collateral and LOC process and calendar", "description": "Formalize collateral/LOC monitoring and renewal process to avoid BMA/NAIC compliance gaps.", "capabilityArea": "Reinsurance Administration – Collateral & LOCs", "priority": "High" }
+        ],
+        "systems": []
+      },
+      {
+        "period": "Months 3–6",
+        "label": "Integration",
+        "focus": "Automate high-volume manual work and establish data ownership.",
+        "people": [
+          { "title": "Clearwater–Oracle feed: dedicated data owner and mapping governance", "description": "Assign data owner for Investment data flow; document and govern Clearwater-to-GL mapping to reduce restatement risk as asset classes grow.", "capabilityArea": "Investment Accounting – Clearwater/Oracle Feed", "priority": "Critical" },
+          { "title": "Subledger-to-GL completeness and data ownership", "description": "Establish data ownership and completeness checks for FAST, Clearwater, and TMS flows into the GL.", "capabilityArea": "Finance Systems – Subledger-to-GL Data Flow & Completeness", "priority": "High" }
+        ],
+        "processes": [
+          { "title": "Treaty accounting automation (L2–L3 scope)", "description": "Automate routine treaty accounting entries and settlement posting where feasible to reduce manual L2–L3 load.", "capabilityArea": "Reinsurance Administration – Treaty Accounting", "priority": "High" }
+        ],
+        "systems": [
+          { "title": "FAST-to-Oracle feed automation", "description": "Automate policy/claims data flow from FAST to Oracle Fusion GL to reduce manual subledger-to-GL work.", "capabilityArea": "Accounting Operations & Technical Accounting – Policy Admin (FAST → GL)", "priority": "Critical" },
+          { "title": "Treasury Management System (TMS) full implementation", "description": "Complete TMS rollout and eliminate manual cash booking and subledger gaps.", "capabilityArea": "Accounting Operations & Technical Accounting – Cash (Treasury / TMS)", "priority": "Critical" }
+        ]
+      },
+      {
+        "period": "Months 6–9",
+        "label": "Automation and depth",
+        "focus": "Expand automation and build L3/L4 competency where manual remains.",
+        "people": [
+          { "title": "Structured securities and derivatives: L3/L4 coverage plan", "description": "Define target L3/L4 depth for OTTI, hedge accounting, and complex valuations; hire or develop and document.", "capabilityArea": "Investment Accounting – Structured Securities, Derivatives & Hedging", "priority": "High" }
+        ],
+        "processes": [
+          { "title": "LDTI reporting and actuarial–finance bridge", "description": "Automate or standardize LDTI reporting and actuarial-to-finance bridge to remove manual restatement risk.", "capabilityArea": "Accounting Operations & Technical Accounting – LDTI Actuarial–Finance Connection", "priority": "Critical" },
+          { "title": "Consolidation and reporting workflow improvements", "description": "Improve F/X and intercompany workflows in consolidation; strengthen balance sheet rec and reporting quality.", "capabilityArea": "Finance Systems – Consolidation & Reporting Workflow", "priority": "High" }
+        ],
+        "systems": [
+          { "title": "Settlement workflow automation in Oracle", "description": "Design and implement automated settlement workflows (target L4 capability) for ceded/assumed and retroceded flows.", "capabilityArea": "Reinsurance Administration – Settlement Execution", "priority": "High" },
+          { "title": "Clearwater–Oracle API and auto-mapping", "description": "Implement automated mapping for new asset classes; reduce manual feed breaks and mapping errors.", "capabilityArea": "Investment Accounting – Clearwater/Oracle Feed", "priority": "Critical" }
+        ]
+      },
+      {
+        "period": "Months 9–12",
+        "label": "Optimization and governance",
+        "focus": "Touchless close, full audit traceability, and sustained governance.",
+        "people": [
+          { "title": "Reinsurance policy and SSAP/ASC interpretation (L4)", "description": "Establish or designate L4 ownership for treaty language interpretation and policy; close audit defense gap.", "capabilityArea": "Reinsurance Administration – Treaty Accounting", "priority": "High" },
+          { "title": "Regulatory and audit evidence governance", "description": "Own regulator interactions and reporting governance; ensure audit-ready evidence for RBC/BSCR/KY RBC and external audit.", "capabilityArea": "Financial Reporting – Regulatory Reporting, External Audit", "priority": "High" }
+        ],
+        "processes": [
+          { "title": "Data completeness and governance framework", "description": "Embed data ownership, completeness checks, and governance controls across all critical flows (FAST, Clearwater, TMS, OneStream).", "capabilityArea": "Finance Systems – Master Data & Hierarchy Governance", "priority": "Critical" }
+        ],
+        "systems": [
+          { "title": "OneStream-to-Workiva pipeline", "description": "Automate consolidation and reporting flow to Workiva for filing and audit readiness.", "capabilityArea": "Finance Systems – Consolidation & Reporting Workflow", "priority": "High" },
+          { "title": "Segment and adjusted operating income automation", "description": "Automate segment analysis and AOI views for board-ready T+3 visibility.", "capabilityArea": "Financial Reporting – Consolidated GAAP Reporting", "priority": "High" }
+        ]
+      }
     ]
   },
-  "phases": [
-    {
-      "period": "Months 0–3",
-      "label": "Stabilization",
-      "focus": "Reduce immediate restatement and key-person risk.",
-      "initiatives": [
-        { "title": "JPY/F/X and treaty settlement logic fix", "description": "Stabilize reinsurance settlement execution (currently L3 manual). Fix translation and treaty logic; document and control to reduce restatement risk.", "capabilityArea": "Reinsurance – Settlement Execution", "priority": "Critical" },
-        { "title": "Intercompany and reinsurance reconciliation baseline", "description": "Clean up intercompany and ceded/assumed reconciliation; create audit-ready baseline for treaty accounting.", "capabilityArea": "Reinsurance – Treaty Accounting", "priority": "Critical" },
-        { "title": "Reinsurance technical accounting (DIG B-36) documentation", "description": "Document embedded derivative and DIG B-36 approach; reduce reliance on single point of knowledge (currently L1 manual).", "capabilityArea": "Reinsurance – Technical Accounting", "priority": "High" },
-        { "title": "Collateral and LOC process and calendar", "description": "Formalize collateral/LOC monitoring and renewal process to avoid BMA/NAIC compliance gaps.", "capabilityArea": "Reinsurance – Collateral & LOCs", "priority": "High" }
+  "areas": {
+    "reinsurance": {
+      "title": "Reinsurance Administration",
+      "subtitle": "3-, 6-, and 9-month priorities aligned to the Reinsurance Administration deep-dive in the Capabilities Matrix.",
+      "phases": [
+        {
+          "period": "Months 0–3",
+          "label": "Stabilization",
+          "focus": "Reduce immediate restatement and key-person risk.",
+          "people": [],
+          "processes": [
+            { "title": "JPY/F/X and treaty settlement logic fix", "description": "Stabilize reinsurance settlement execution (currently L3 manual). Fix translation and treaty logic; document and control to reduce restatement risk.", "priority": "Critical" },
+            { "title": "Intercompany and reinsurance reconciliation baseline", "description": "Clean up intercompany and ceded/assumed reconciliation; create audit-ready baseline for treaty accounting.", "priority": "Critical" },
+            { "title": "Reinsurance technical accounting (DIG B-36) documentation", "description": "Document embedded derivative and DIG B-36 approach; reduce reliance on single point of knowledge (currently L1 manual).", "priority": "High" },
+            { "title": "Collateral and LOC process and calendar", "description": "Formalize collateral/LOC monitoring and renewal process to avoid BMA/NAIC compliance gaps.", "priority": "High" }
+          ],
+          "systems": []
+        },
+        {
+          "period": "Months 3–6",
+          "label": "Integration",
+          "focus": "Automate routine treaty and settlement work where feasible.",
+          "people": [],
+          "processes": [
+            { "title": "Treaty accounting automation (L2–L3 scope)", "description": "Automate routine treaty accounting entries and settlement posting where feasible to reduce manual L2–L3 load.", "priority": "High" }
+          ],
+          "systems": []
+        },
+        {
+          "period": "Months 6–9",
+          "label": "Automation and depth",
+          "focus": "Settlement automation and path to L4.",
+          "people": [
+            { "title": "Reinsurance policy and SSAP/ASC interpretation (L4)", "description": "Establish or designate L4 ownership for treaty language interpretation and policy; close audit defense gap.", "priority": "High" }
+          ],
+          "processes": [],
+          "systems": [
+            { "title": "Settlement workflow automation in Oracle", "description": "Design and implement automated settlement workflows (target L4 capability) for ceded/assumed and retroceded flows.", "priority": "High" }
+          ]
+        }
       ]
     },
-    {
-      "period": "Months 3–6",
-      "label": "Integration",
-      "focus": "Automate high-volume manual work and establish data ownership.",
-      "initiatives": [
-        { "title": "FAST-to-Oracle feed automation", "description": "Automate policy/claims data flow from FAST to Oracle Fusion GL to reduce manual subledger-to-GL work.", "capabilityArea": "TOM – System of Record", "priority": "Critical" },
-        { "title": "Treasury Management System (TMS) full implementation", "description": "Complete TMS rollout and eliminate manual cash booking and subledger gaps.", "capabilityArea": "Controllership – Treasury & Cash", "priority": "Critical" },
-        { "title": "Clearwater–Oracle feed: dedicated data owner and mapping governance", "description": "Assign data owner for Investment data flow; document and govern Clearwater-to-GL mapping to reduce restatement risk as asset classes grow.", "capabilityArea": "Investment – Clearwater/Oracle Feed", "priority": "Critical" },
-        { "title": "Treaty accounting automation (L2–L3 scope)", "description": "Automate routine treaty accounting entries and settlement posting where feasible to reduce manual L2–L3 load.", "capabilityArea": "Reinsurance – Treaty Accounting", "priority": "High" }
+    "investment": {
+      "title": "Investment Accounting",
+      "subtitle": "3-, 6-, and 9-month priorities aligned to the Investment Accounting deep-dive in the Capabilities Matrix.",
+      "phases": [
+        {
+          "period": "Months 0–3",
+          "label": "Stabilization",
+          "focus": "Establish data ownership and mapping governance.",
+          "people": [],
+          "processes": [],
+          "systems": []
+        },
+        {
+          "period": "Months 3–6",
+          "label": "Integration",
+          "focus": "Dedicated data owner and Clearwater-to-GL governance.",
+          "people": [
+            { "title": "Clearwater–Oracle feed: dedicated data owner and mapping governance", "description": "Assign data owner for Investment data flow; document and govern Clearwater-to-GL mapping to reduce restatement risk as asset classes grow.", "priority": "Critical" }
+          ],
+          "processes": [],
+          "systems": []
+        },
+        {
+          "period": "Months 6–9",
+          "label": "Automation and depth",
+          "focus": "Auto-mapping and L3/L4 coverage for structured products and derivatives.",
+          "people": [
+            { "title": "Structured securities and derivatives: L3/L4 coverage plan", "description": "Define target L3/L4 depth for OTTI, hedge accounting, and complex valuations; hire or develop and document.", "priority": "High" }
+          ],
+          "processes": [],
+          "systems": [
+            { "title": "Clearwater–Oracle API and auto-mapping", "description": "Implement automated mapping for new asset classes; reduce manual feed breaks and mapping errors.", "priority": "Critical" }
+          ]
+        }
       ]
     },
-    {
-      "period": "Months 6–9",
-      "label": "Automation and depth",
-      "focus": "Expand automation and build L3/L4 competency where manual remains.",
-      "initiatives": [
-        { "title": "Settlement workflow automation in Oracle", "description": "Design and implement automated settlement workflows (target L4 capability) for ceded/assumed and retroceded flows.", "capabilityArea": "Reinsurance – Settlement Execution", "priority": "High" },
-        { "title": "Clearwater–Oracle API and auto-mapping", "description": "Implement automated mapping for new asset classes; reduce manual feed breaks and mapping errors.", "capabilityArea": "Investment – Clearwater/Oracle Feed", "priority": "Critical" },
-        { "title": "LDTI reporting and actuarial–finance bridge", "description": "Automate or standardize LDTI reporting and actuarial-to-finance bridge to remove manual restatement risk.", "capabilityArea": "Technical Accounting – LDTI", "priority": "Critical" },
-        { "title": "Structured securities and derivatives: L3/L4 coverage plan", "description": "Define target L3/L4 depth for OTTI, hedge accounting, and complex valuations; hire or develop and document.", "capabilityArea": "Investment – Structured Securities, Derivatives", "priority": "High" }
+    "accounting-ops": {
+      "title": "Accounting Operations & Technical Accounting",
+      "subtitle": "3-, 6-, and 9-month priorities aligned to the Accounting Operations & Technical Accounting deep-dive in the Capabilities Matrix.",
+      "phases": [
+        {
+          "period": "Months 0–3",
+          "label": "Stabilization",
+          "focus": "No initiatives in 0–3 for this area.",
+          "people": [],
+          "processes": [],
+          "systems": []
+        },
+        {
+          "period": "Months 3–6",
+          "label": "Integration",
+          "focus": "Automate policy admin and cash flows to the GL.",
+          "people": [],
+          "processes": [],
+          "systems": [
+            { "title": "FAST-to-Oracle feed automation", "description": "Automate policy/claims data flow from FAST to Oracle Fusion GL to reduce manual subledger-to-GL work.", "priority": "Critical" },
+            { "title": "Treasury Management System (TMS) full implementation", "description": "Complete TMS rollout and eliminate manual cash booking and subledger gaps.", "priority": "Critical" }
+          ]
+        },
+        {
+          "period": "Months 6–9",
+          "label": "Automation and depth",
+          "focus": "LDTI and actuarial–finance bridge.",
+          "people": [],
+          "processes": [
+            { "title": "LDTI reporting and actuarial–finance bridge", "description": "Automate or standardize LDTI reporting and actuarial-to-finance bridge to remove manual restatement risk.", "priority": "Critical" }
+          ],
+          "systems": []
+        }
       ]
     },
-    {
-      "period": "Months 9–12",
-      "label": "Optimization and governance",
-      "focus": "Touchless close, full audit traceability, and sustained governance.",
-      "initiatives": [
-        { "title": "OneStream-to-Workiva pipeline", "description": "Automate consolidation and reporting flow to Workiva for filing and audit readiness.", "capabilityArea": "TOM – Strategic Velocity", "priority": "High" },
-        { "title": "Segment and adjusted operating income automation", "description": "Automate segment analysis and AOI views for board-ready T+3 visibility.", "capabilityArea": "Technical Accounting – Adjusted Operating Income", "priority": "High" },
-        { "title": "Reinsurance policy and SSAP/ASC interpretation (L4)", "description": "Establish or designate L4 ownership for treaty language interpretation and policy; close audit defense gap.", "capabilityArea": "Reinsurance – Treaty Accounting", "priority": "High" },
-        { "title": "Data completeness and governance framework", "description": "Embed data ownership, completeness checks, and governance controls across all critical flows (FAST, Clearwater, TMS, OneStream).", "capabilityArea": "Cross-cutting", "priority": "Critical" }
+    "financial-reporting": {
+      "title": "Financial Reporting",
+      "subtitle": "3-, 6-, and 9-month priorities aligned to the Financial Reporting deep-dive in the Capabilities Matrix.",
+      "phases": [
+        {
+          "period": "Months 0–3",
+          "label": "Stabilization",
+          "focus": "No initiatives in 0–3 for this area.",
+          "people": [],
+          "processes": [],
+          "systems": []
+        },
+        {
+          "period": "Months 3–6",
+          "label": "Integration",
+          "focus": "No initiatives in 3–6 for this area.",
+          "people": [],
+          "processes": [],
+          "systems": []
+        },
+        {
+          "period": "Months 6–9",
+          "label": "Automation and depth",
+          "focus": "Segment, AOI, and audit evidence (continues into 9–12 in summary).",
+          "people": [
+            { "title": "Regulatory and audit evidence governance", "description": "Own regulator interactions and reporting governance; ensure audit-ready evidence for RBC/BSCR/KY RBC and external audit.", "priority": "High" }
+          ],
+          "processes": [],
+          "systems": [
+            { "title": "Segment and adjusted operating income automation", "description": "Automate segment analysis and AOI views for board-ready T+3 visibility.", "priority": "High" }
+          ]
+        }
+      ]
+    },
+    "finance-systems": {
+      "title": "Finance Systems",
+      "subtitle": "3-, 6-, and 9-month priorities aligned to the Finance Systems deep-dive in the Capabilities Matrix.",
+      "phases": [
+        {
+          "period": "Months 0–3",
+          "label": "Stabilization",
+          "focus": "No initiatives in 0–3 for this area.",
+          "people": [],
+          "processes": [],
+          "systems": []
+        },
+        {
+          "period": "Months 3–6",
+          "label": "Integration",
+          "focus": "Subledger-to-GL data ownership and completeness.",
+          "people": [
+            { "title": "Subledger-to-GL completeness and data ownership", "description": "Establish data ownership and completeness checks for FAST, Clearwater, and TMS flows into the GL.", "priority": "High" }
+          ],
+          "processes": [],
+          "systems": []
+        },
+        {
+          "period": "Months 6–9",
+          "label": "Automation and depth",
+          "focus": "Consolidation workflow and reporting pipeline.",
+          "people": [],
+          "processes": [
+            { "title": "Consolidation and reporting workflow improvements", "description": "Improve F/X and intercompany workflows in consolidation; strengthen balance sheet rec and reporting quality.", "priority": "High" },
+            { "title": "Data completeness and governance framework", "description": "Embed data ownership, completeness checks, and governance controls across all critical flows (FAST, Clearwater, TMS, OneStream).", "priority": "Critical" }
+          ],
+          "systems": [
+            { "title": "OneStream-to-Workiva pipeline", "description": "Automate consolidation and reporting flow to Workiva for filing and audit readiness.", "priority": "High" }
+          ]
+        }
       ]
     }
-  ]
+  }
 }

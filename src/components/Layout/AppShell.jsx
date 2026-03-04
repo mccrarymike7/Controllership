@@ -1,6 +1,6 @@
 import { Sidebar } from './Sidebar';
 import { TopBar } from './TopBar';
-import { colors, bgContent, themeMessaging } from '../../theme';
+import { colors, themeMessaging } from '../../theme';
 
 export function AppShell({ currentView, onSelectView, sidebarOpen, setSidebarOpen, children }) {
   return (
@@ -18,7 +18,7 @@ export function AppShell({ currentView, onSelectView, sidebarOpen, setSidebarOpe
         />
         <main
           className="flex-1 overflow-auto"
-          style={{ backgroundColor: bgContent }}
+          style={{ backgroundColor: 'var(--main-bg, #F0F2F7)' }}
         >
           {children}
         </main>

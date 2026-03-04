@@ -1,4 +1,4 @@
-import { Users, BookOpen, Target, AlertCircle, Send } from 'lucide-react';
+import { Users, BookOpen, Target, AlertCircle, ListChecks, TrendingUp } from 'lucide-react';
 import { colors } from '../theme';
 
 export function DeepDiveInstructionsPage() {
@@ -25,10 +25,30 @@ export function DeepDiveInstructionsPage() {
             <li><strong>Competency names</strong> — Short labels for each capability (e.g. “Settlement Execution”, “Treaty Accounting”).</li>
             <li><strong>Level descriptions</strong> — What “good” looks like at each level (1–4) for that competency. Level 4 can describe where we’re heading in ~12 months (transactions and complexity we may not have yet).</li>
             <li>
-              <strong>Where the function operates today</strong> — For each competency, what level the function or group can deliver at and whether it’s mostly manual or automated. If it’s manual, describe <em>how</em> the work is done (system reports, recurring Excel templates/EUCs, paper, a new spreadsheet every time), whether it’s done internally vs via a 3rd party, and if it’s a hybrid (some automation with manual overrides, or automated at Level 1 but manual at Level 2).
+              <strong>Where the function operates today</strong> — For each competency: which level(s) the function delivers at, and at each of those levels whether the work is <strong>manual</strong> or <strong>automated</strong>. You can have both (e.g. automated at Level 1, manual at Level 2–3). Optionally add <em>how</em> manual work is done (reports, EUCs, paper, new spreadsheet each time) and whether it’s internal vs 3rd party—we use that for risk and roadmap even if it’s not shown in the grid yet.
             </li>
             <li><strong>Risks</strong> — A few bullets on what happens if we stay at the current state (e.g. key-person dependency, errors, delay).</li>
+            <li><strong>Benefits of leveling up</strong> — For each competency (or for your top priorities): what we gain by moving to the next level—e.g. fewer manual hand-offs, faster close, better audit readiness, ability to support new products or jurisdictions, or reduced key-person dependency. Short bullets are enough; we use this in the matrix and for prioritization.</li>
           </ul>
+        </section>
+
+        <section className="bg-white rounded-2xl border-2 p-6" style={{ borderColor: colors.secondary + '44' }}>
+          <h3 className="text-lg font-bold mb-4 flex items-center gap-2" style={{ color: colors.primary }}>
+            <ListChecks className="w-5 h-5" /> How do we know what a competency is for our area?
+          </h3>
+          <p className="text-sm mb-4">
+            A <strong>competency</strong> is a distinct capability the function needs to deliver—something you can assess at levels 1–4 and say “we operate here today” and “we’re aiming there in 12 months.” Use the following to decide what counts as a competency in your area:
+          </p>
+          <ul className="text-sm space-y-2 list-disc pl-5 opacity-90">
+            <li><strong>Core processes and outputs</strong> — What does your area own end-to-end? (e.g. settlement execution, treaty accounting, regulatory filing production.) Each major process or output that has a “how well do we do this?” question is a candidate competency.</li>
+            <li><strong>Where level really varies</strong> — If some work is routine and other work is complex or judgment-heavy, splitting into separate competencies (e.g. “Routine settlements” vs “Complex / exception settlements”) can make the matrix more useful.</li>
+            <li><strong>Risks and dependencies</strong> — If you talk about “we don’t have enough depth in X” or “X is a key-person risk,” X is likely a competency worth naming.</li>
+            <li><strong>Look at similar areas in the matrix</strong> — Check other deep-dive sections (e.g. Reinsurance, Investment Accounting, Financial Reporting). Use them as a pattern: 3–6 competencies per area is typical; each has a short name and clear level descriptions.</li>
+            <li><strong>Not job titles—capabilities</strong> — Competencies are what the function can do, not roles. “Treaty Accounting” is a competency; “Reinsurance Manager” is a role. One role may cover several competencies.</li>
+          </ul>
+          <p className="text-sm mt-4 opacity-90">
+            If you’re unsure, start with 3–5 competencies that matter most for close, controls, and audit—you can add or refine later. Your area lead or the matrix owner can help align with other areas.
+          </p>
         </section>
 
         <section className="bg-white rounded-2xl border-2 p-6" style={{ borderColor: colors.secondary + '44' }}>
@@ -63,13 +83,26 @@ export function DeepDiveInstructionsPage() {
 
         <section className="bg-white rounded-2xl border-2 p-6" style={{ borderColor: colors.secondary + '44' }}>
           <h3 className="text-lg font-bold mb-4 flex items-center gap-2" style={{ color: colors.primary }}>
-            <Target className="w-5 h-5" /> Describing “where we operate today”
+            <Target className="w-5 h-5" /> “Where the function operates today” — and how it shows up in the matrix
           </h3>
           <p className="text-sm mb-4">
-            For each competency, we show what level the <strong>function or group</strong> operates at today and whether that work is <strong>manual</strong> (spreadsheets, email, hand-offs) or <strong>automated</strong> (system-driven, straight-through). Think “the function’s ability to complete this competency today.” The scale is forward-looking—we may be at Level 2 or 3 today while Level 4 is where we’re heading in 12 months. That gap is what we use for planning and investment.
+            For each competency we need to know: <strong>at which level(s) does the function actually operate today?</strong> and at each of those levels, is the work <strong>manual</strong> (spreadsheets, reports, EUCs, hand-offs) or <strong>automated</strong> (system-driven, straight-through)? The matrix is forward-looking—Level 4 is often our 12‑month target—so we may operate at Level 2 or 3 today. That gap is what we use for planning.
           </p>
+          <p className="text-sm font-medium mb-2" style={{ color: colors.action }}>
+            How this appears in the Capabilities Matrix
+          </p>
+          <p className="text-sm mb-4 opacity-90">
+            In each deep-dive table, every cell shows what “good” looks like at that level (the level description). For competencies where we’ve captured operating state, we <strong>highlight the cell(s) where the function operates today</strong> and tag them <strong>M</strong> (manual) or <strong>A</strong> (automated). So you’ll see colored cells with an M or A badge on the levels we’re at; the other cells stay as reference for where we’re heading. That’s how “where we operate today” is shown in the grid.
+          </p>
+          <p className="text-sm font-medium mb-2" style={{ color: colors.primary }}>
+            What to provide when you contribute
+          </p>
+          <ul className="text-sm space-y-1 list-disc pl-5 opacity-90 mb-4">
+            <li><strong>Level + mode:</strong> e.g. “We operate at Level 2 and it’s manual” or “Level 1 is automated, Level 2 and 3 are manual.” (Hybrid is fine—different levels can have different modes.)</li>
+            <li><strong>Optional but helpful:</strong> If it’s manual, <em>how</em> (system report + Excel, EUC, paper, new spreadsheet every time) and whether it’s done internally or by a 3rd party. This helps us judge how hard it is to move to the next level and feeds risk/roadmap; we may add it to the matrix later.</li>
+          </ul>
           <p className="text-sm opacity-90">
-            When you provide input, describe the function/group: e.g. “The function is at Level 2 today and it’s mostly manual” or “Level 3 and largely automated.” If it’s manual, say <em>how</em> (standard report + Excel, EUCs, paper, new spreadsheet every time), and whether the work is done internally or by a 3rd party. Call out hybrid situations too—for example, “Level 1 is automated from the system, but Level 2 requires manual adjustments in Excel.” It’s fine if the function isn’t at Level 4 yet—that’s the target we’re building toward.
+            It’s fine if the function isn’t at Level 4 yet—that’s the target we’re building toward. Your input makes the matrix an honest picture of today so we can prioritize where to invest.
           </p>
         </section>
 
@@ -92,15 +125,23 @@ export function DeepDiveInstructionsPage() {
           </p>
         </section>
 
-        <section className="bg-white rounded-2xl border-2 p-6" style={{ borderColor: colors.action + '66' }}>
-          <h3 className="text-lg font-bold mb-4 flex items-center gap-2" style={{ color: colors.action }}>
-            <Send className="w-5 h-5" /> How to submit your content
+        <section className="bg-white rounded-2xl border-2 p-6" style={{ borderColor: '#86efac', backgroundColor: '#ecfdf5' }}>
+          <h3 className="text-lg font-bold mb-4 flex items-center gap-2" style={{ color: '#047857' }}>
+            <TrendingUp className="w-5 h-5" /> Instructions for leveling up
           </h3>
-          <p className="text-sm mb-2">
-            Send your content to your area lead or the person coordinating the Capabilities Matrix (e.g. Controller, Director of Accounting Policy/Operations, or Director of Finance Systems). You can provide it in whatever format is easiest—Word, email, or a short document—as long as it’s clear which deep-dive area and competency each piece applies to.
+          <p className="text-sm mb-4">
+            For each deep-dive area, the matrix has a <strong>“Benefits of Leveling Up”</strong> box (green) below the risks. Use it to capture what the function gains by moving to the next level—especially from Level 3 to Level 4. This helps prioritize where to invest and makes the case for change.
           </p>
+          <p className="text-sm font-medium mb-2" style={{ color: colors.primary }}>
+            What to include
+          </p>
+          <ul className="text-sm space-y-2 list-disc pl-5 opacity-90 mb-4">
+            <li><strong>Operational benefits</strong> — e.g. faster close, fewer manual hand-offs, less rework, better capacity to handle new volume or products.</li>
+            <li><strong>Control and audit benefits</strong> — e.g. audit-ready evidence, stronger traceability, reduced restatement or finding risk.</li>
+            <li><strong>Strategic benefits</strong> — e.g. ability to support new jurisdictions or products, reduced key-person dependency, clearer ownership and governance.</li>
+          </ul>
           <p className="text-sm opacity-90">
-            If you’re not sure who owns your area, check the Team Assessment section on the Capabilities Matrix page; the matrix owner will make sure your input is reflected in the next update.
+            Keep each benefit to one short sentence. Aim for 3–5 benefits per area. If your area doesn’t have benefits filled in yet, add them when you contribute—they appear in the green box on the Capabilities Matrix page.
           </p>
         </section>
       </div>

@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Menu, X, LayoutDashboard, Users, GitBranch, Network, Map, FileText } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { X, LayoutDashboard, Users, GitBranch, Network, Map, FileText, ChevronDown, ChevronRight, ClipboardList } from 'lucide-react';
 import { colors, themeMessaging } from '../../theme';
 
 const navItems = [
@@ -10,14 +10,49 @@ const navItems = [
     icon: Users,
     children: [
       { id: 'capabilities-instructions', label: 'Instructions for updating deep dives', icon: FileText },
+      { id: 'implementation-plan', label: 'Implementation Plan', icon: ClipboardList },
+    ],
+  },
+  {
+    id: 'roadmap',
+    label: 'Roadmap',
+    icon: Map,
+    children: [
+      { id: 'roadmap-reinsurance', label: 'Reinsurance Administration', icon: Map },
+      { id: 'roadmap-investment', label: 'Investment Accounting', icon: Map },
+      { id: 'roadmap-accounting-ops', label: 'Accounting Ops & Technical', icon: Map },
+      { id: 'roadmap-financial-reporting', label: 'Financial Reporting', icon: Map },
+      { id: 'roadmap-finance-systems', label: 'Finance Systems', icon: Map },
     ],
   },
   { id: 'tom', label: 'Target Operating Model', icon: GitBranch },
-  { id: 'roadmap', label: 'Roadmap', icon: Map },
 ];
 
 export function Sidebar({ currentView, onSelectView, isOpen, onClose }) {
-  const [expanded, setExpanded] = useState(true);
+  const [expandedIds, setExpandedIds] = useState(() => new Set());
+
+  useEffect(() => {
+    if (!currentView) return;
+    const next = new Set();
+    navItems.forEach((item) => {
+      if (item.children && (item.id === currentView || item.children.some((c) => c.id === currentView))) {
+        next.add(item.id);
+      }
+    });
+    setExpandedIds(next);
+  }, [currentView]);
+
+  const isExpanded = (id) => expandedIds.has(id);
+  const toggleExpanded = (e, id) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setExpandedIds((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
+  };
 
   return (
     <>
@@ -60,16 +95,13 @@ export function Sidebar({ currentView, onSelectView, isOpen, onClose }) {
           {navItems.map((item) => {
             const Icon = item.icon;
             const isActive = currentView === item.id;
+            const hasChildren = item.children?.length;
+            const expanded = hasChildren ? isExpanded(item.id) : false;
             return (
               <div key={item.id}>
-                <button
-                  type="button"
-                  onClick={() => {
-                    onSelectView(item.id);
-                    onClose?.();
-                  }}
+                <div
                   className={`
-                    w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-left text-sm font-medium
+                    w-full flex items-center gap-1 px-3 py-2.5 rounded-lg text-left text-sm font-medium
                     transition-colors
                     ${isActive ? 'text-white' : 'opacity-80 hover:opacity-100'}
                   `}
@@ -77,25 +109,52 @@ export function Sidebar({ currentView, onSelectView, isOpen, onClose }) {
                     backgroundColor: isActive ? colors.action : 'transparent',
                   }}
                 >
-                  <Icon className="w-4 h-4 flex-shrink-0" />
-                  {item.label}
-                </button>
-                {item.children?.map((child) => {
-                  const ChildIcon = child.icon;
-                  const isChildActive = currentView === child.id;
-                  return (
+                  {hasChildren ? (
                     <button
-                      key={child.id}
                       type="button"
-                      onClick={() => {
-                        onSelectView(child.id);
-                        onClose?.();
-                      }}
-                      className={`
-                        w-full flex items-center gap-3 pl-8 pr-3 py-2 rounded-lg text-left text-sm
-                        transition-colors opacity-90 hover:opacity-100
-                        ${isChildActive ? 'text-white font-medium' : 'opacity-75'}
-                      `}
+                      onClick={(e) => toggleExpanded(e, item.id)}
+                      className="p-0.5 rounded hover:bg-white/10 flex-shrink-0"
+                      aria-label={expanded ? 'Collapse' : 'Expand'}
+                    >
+                      {expanded ? (
+                        <ChevronDown className="w-4 h-4" />
+                      ) : (
+                        <ChevronRight className="w-4 h-4" />
+                      )}
+                    </button>
+                  ) : (
+                    <span className="w-5 flex-shrink-0" aria-hidden />
+                  )}
+                  <button
+                    type="button"
+                    onClick={() => {
+                      onSelectView(item.id);
+                      onClose?.();
+                    }}
+                    className="flex-1 flex items-center gap-3 min-w-0 text-left"
+                  >
+                    <Icon className="w-4 h-4 flex-shrink-0" />
+                    <span className="truncate">{item.label}</span>
+                  </button>
+                </div>
+                {hasChildren && expanded && (
+                  <div className="ml-6 border-l-2 border-white/20 pl-3" style={{ borderColor: colors.secondary + '44' }}>
+                    {item.children.map((child) => {
+                      const ChildIcon = child.icon;
+                      const isChildActive = currentView === child.id;
+                      return (
+                        <button
+                          key={child.id}
+                          type="button"
+                          onClick={() => {
+                            onSelectView(child.id);
+                            onClose?.();
+                          }}
+                          className={`
+                            w-full flex items-center gap-3 pl-5 pr-3 py-2 rounded-lg text-left text-sm
+                            transition-colors opacity-90 hover:opacity-100
+                            ${isChildActive ? 'text-white font-medium' : 'opacity-75'}
+                          `}
                       style={{
                         backgroundColor: isChildActive ? colors.action : 'transparent',
                       }}
@@ -103,8 +162,10 @@ export function Sidebar({ currentView, onSelectView, isOpen, onClose }) {
                       <ChildIcon className="w-3.5 h-3.5 flex-shrink-0 opacity-80" />
                       {child.label}
                     </button>
-                  );
-                })}
+                      );
+                    })}
+                  </div>
+                )}
               </div>
             );
           })}
