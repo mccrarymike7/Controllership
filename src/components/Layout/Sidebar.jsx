@@ -54,6 +54,85 @@ export function Sidebar({ currentView, onSelectView, isOpen, onClose }) {
     });
   };
 
+  const renderNavItem = (item) => {
+    const Icon = item.icon;
+    const isActive = currentView === item.id;
+    const hasChildren = item.children?.length;
+    const expanded = hasChildren ? isExpanded(item.id) : false;
+
+    return (
+      <div key={item.id}>
+        <div
+          className={`
+                    w-full flex items-center gap-1 px-3 py-2.5 rounded-lg text-left text-sm font-medium
+                    transition-colors
+                    ${isActive ? 'text-white' : 'opacity-80 hover:opacity-100'}
+                  `}
+          style={{
+            backgroundColor: isActive ? colors.action : 'transparent',
+          }}
+        >
+          {hasChildren ? (
+            <button
+              type="button"
+              onClick={(e) => toggleExpanded(e, item.id)}
+              className="p-0.5 rounded hover:bg-white/10 flex-shrink-0"
+              aria-label={expanded ? 'Collapse' : 'Expand'}
+            >
+              {expanded ? (
+                <ChevronDown className="w-4 h-4" />
+              ) : (
+                <ChevronRight className="w-4 h-4" />
+              )}
+            </button>
+          ) : (
+            <span className="w-5 flex-shrink-0" aria-hidden />
+          )}
+          <button
+            type="button"
+            onClick={() => {
+              onSelectView(item.id);
+              onClose?.();
+            }}
+            className="flex-1 flex items-center gap-3 min-w-0 text-left"
+          >
+            <Icon className="w-4 h-4 flex-shrink-0" />
+            <span className="truncate">{item.label}</span>
+          </button>
+        </div>
+        {hasChildren && expanded && (
+          <div className="ml-6 border-l-2 border-white/20 pl-3" style={{ borderColor: colors.secondary + '44' }}>
+            {item.children.map((child) => {
+              const ChildIcon = child.icon;
+              const isChildActive = currentView === child.id;
+              return (
+                <button
+                  key={child.id}
+                  type="button"
+                  onClick={() => {
+                    onSelectView(child.id);
+                    onClose?.();
+                  }}
+                  className={`
+                            w-full flex items-center gap-3 pl-5 pr-3 py-2 rounded-lg text-left text-sm
+                            transition-colors opacity-90 hover:opacity-100
+                            ${isChildActive ? 'text-white font-medium' : 'opacity-75'}
+                          `}
+                  style={{
+                    backgroundColor: isChildActive ? colors.action : 'transparent',
+                  }}
+                >
+                  <ChildIcon className="w-3.5 h-3.5 flex-shrink-0 opacity-80" />
+                  {child.label}
+                </button>
+              );
+            })}
+          </div>
+        )}
+      </div>
+    );
+  };
+
   return (
     <>
       {/* Mobile backdrop */}
@@ -77,7 +156,7 @@ export function Sidebar({ currentView, onSelectView, isOpen, onClose }) {
         <div className="flex items-center justify-between p-4 border-b" style={{ borderColor: `${colors.secondary}44` }}>
           <div className="flex items-center gap-2">
             <LayoutDashboard className="w-6 h-6" style={{ color: colors.target }} />
-            <span className="font-bold tracking-tight">Controllership</span>
+            <span className="font-bold tracking-tight">Controllership Target Operating Model</span>
           </div>
           <button
             type="button"
@@ -92,83 +171,12 @@ export function Sidebar({ currentView, onSelectView, isOpen, onClose }) {
           <div className="text-[10px] font-bold uppercase tracking-widest px-3 py-2 opacity-60">
             Strategy & People
           </div>
-          {navItems.map((item) => {
-            const Icon = item.icon;
-            const isActive = currentView === item.id;
-            const hasChildren = item.children?.length;
-            const expanded = hasChildren ? isExpanded(item.id) : false;
-            return (
-              <div key={item.id}>
-                <div
-                  className={`
-                    w-full flex items-center gap-1 px-3 py-2.5 rounded-lg text-left text-sm font-medium
-                    transition-colors
-                    ${isActive ? 'text-white' : 'opacity-80 hover:opacity-100'}
-                  `}
-                  style={{
-                    backgroundColor: isActive ? colors.action : 'transparent',
-                  }}
-                >
-                  {hasChildren ? (
-                    <button
-                      type="button"
-                      onClick={(e) => toggleExpanded(e, item.id)}
-                      className="p-0.5 rounded hover:bg-white/10 flex-shrink-0"
-                      aria-label={expanded ? 'Collapse' : 'Expand'}
-                    >
-                      {expanded ? (
-                        <ChevronDown className="w-4 h-4" />
-                      ) : (
-                        <ChevronRight className="w-4 h-4" />
-                      )}
-                    </button>
-                  ) : (
-                    <span className="w-5 flex-shrink-0" aria-hidden />
-                  )}
-                  <button
-                    type="button"
-                    onClick={() => {
-                      onSelectView(item.id);
-                      onClose?.();
-                    }}
-                    className="flex-1 flex items-center gap-3 min-w-0 text-left"
-                  >
-                    <Icon className="w-4 h-4 flex-shrink-0" />
-                    <span className="truncate">{item.label}</span>
-                  </button>
-                </div>
-                {hasChildren && expanded && (
-                  <div className="ml-6 border-l-2 border-white/20 pl-3" style={{ borderColor: colors.secondary + '44' }}>
-                    {item.children.map((child) => {
-                      const ChildIcon = child.icon;
-                      const isChildActive = currentView === child.id;
-                      return (
-                        <button
-                          key={child.id}
-                          type="button"
-                          onClick={() => {
-                            onSelectView(child.id);
-                            onClose?.();
-                          }}
-                          className={`
-                            w-full flex items-center gap-3 pl-5 pr-3 py-2 rounded-lg text-left text-sm
-                            transition-colors opacity-90 hover:opacity-100
-                            ${isChildActive ? 'text-white font-medium' : 'opacity-75'}
-                          `}
-                      style={{
-                        backgroundColor: isChildActive ? colors.action : 'transparent',
-                      }}
-                    >
-                      <ChildIcon className="w-3.5 h-3.5 flex-shrink-0 opacity-80" />
-                      {child.label}
-                    </button>
-                      );
-                    })}
-                  </div>
-                )}
-              </div>
-            );
-          })}
+          {navItems.filter((item) => item.id === 'capabilities').map(renderNavItem)}
+
+          <div className="mt-4 text-[10px] font-bold uppercase tracking-widest px-3 py-2 opacity-60">
+            Under Development
+          </div>
+          {navItems.filter((item) => item.id !== 'capabilities').map(renderNavItem)}
         </nav>
         <div className="p-3 border-t text-[10px] uppercase tracking-widest opacity-50 space-y-1" style={{ borderColor: `${colors.secondary}44` }}>
           <div>{themeMessaging.tagline}</div>
